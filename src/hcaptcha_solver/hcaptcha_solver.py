@@ -109,7 +109,8 @@ class Captcha_Solver:
 def normalize_captcha_string(captcha_str):
     """normalizes the captcha string"""
 
-    if "Please click" not in captcha_str:
+    words = ["click", "press", "select", "tap", "choose", "verify", "solve", "complete", "pick", "identify", "confirm", "match", "find", "check", "validate", "indicate", "point", "pinpoint", "locate", "spot"]
+    if not any(word in captcha_str.lower() for word in words):
         print("""[WARNING] The captcha string does not appear to be english. \
         This version of hcaptcha-solver only supports english captchas, \
         consider changing the language of the webhandler""")
